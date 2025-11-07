@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:notnetflix/repositories/data_repository.dart';
+import 'package:notnetflix/ui/screens/loading_screen.dart';
+import 'package:provider/provider.dart';
 import 'ui/screens/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => DataRepository(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: HomeScreen(),
+      home: LoadingScreen(),
     );
   }
 }
